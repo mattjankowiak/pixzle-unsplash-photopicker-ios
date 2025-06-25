@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import SwiftUI
 
 protocol UnsplashPhotoPickerViewControllerDelegate: AnyObject {
     func unsplashPhotoPickerViewController(_ viewController: UnsplashPhotoPickerViewController, didSelectPhotos photos: [UnsplashPhoto])
@@ -54,7 +55,7 @@ class UnsplashPhotoPickerViewController: UIViewController {
         collectionView.register(PagingView.self, forSupplementaryViewOfKind: UICollectionView.elementKindSectionFooter, withReuseIdentifier: PagingView.reuseIdentifier)
         collectionView.contentInsetAdjustmentBehavior = .automatic
         collectionView.layoutMargins = UIEdgeInsets(top: 0.0, left: 16.0, bottom: 0.0, right: 16.0)
-        collectionView.backgroundColor = UIColor.photoPicker.background
+        collectionView.backgroundColor = UIColor(Configuration.shared.backgroundColor ?? Color.gray)
         collectionView.allowsMultipleSelection = Configuration.shared.allowsMultipleSelection
         return collectionView
     }()
@@ -90,8 +91,9 @@ class UnsplashPhotoPickerViewController: UIViewController {
         return collectionView.indexPathsForSelectedItems?.count ?? 0
     }
 
-    private let editorialDataSource = PhotosDataSourceFactory.collection(identifier: Configuration.shared.editorialCollectionId).dataSource
-
+    private let editorialDataSource = PhotosDataSourceFactory.all(orderBy: "popular").dataSource
+    
+    
     private var previewingContext: UIViewControllerPreviewing?
     private var searchText: String?
 
@@ -161,6 +163,21 @@ class UnsplashPhotoPickerViewController: UIViewController {
         updateTitle()
         navigationItem.leftBarButtonItem = cancelBarButtonItem
 
+        if let bgColor = Configuration.shared.backgroundColor {
+            let appearance = UINavigationBarAppearance()
+            appearance.configureWithOpaqueBackground()
+            appearance.backgroundColor = UIColor(bgColor)
+            
+            if let titleTextColor = Configuration.shared.titleTextColor {
+                appearance.titleTextAttributes = [.foregroundColor: UIColor(titleTextColor)]
+                appearance.largeTitleTextAttributes = [.foregroundColor: UIColor(titleTextColor)]
+            }
+            
+            navigationController?.navigationBar.standardAppearance = appearance
+            navigationController?.navigationBar.scrollEdgeAppearance = appearance
+        }
+        
+
         if Configuration.shared.allowsMultipleSelection {
             doneBarButtonItem.isEnabled = false
             navigationItem.rightBarButtonItem = doneBarButtonItem
@@ -168,9 +185,6 @@ class UnsplashPhotoPickerViewController: UIViewController {
     }
 
     private func setupSearchController() {
-        let trimmedQuery = Configuration.shared.query?.trimmingCharacters(in: .whitespacesAndNewlines)
-        if let query = trimmedQuery, query.isEmpty == false { return }
-
         navigationItem.searchController = searchController
         navigationItem.hidesSearchBarWhenScrolling = false
         definesPresentationContext = true

@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 54;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -39,7 +39,6 @@
 		23A0D235216D901400BEAE05 /* PhotoView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0D230216D901400BEAE05 /* PhotoView.swift */; };
 		23A0D236216D901400BEAE05 /* PhotoCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0D231216D901400BEAE05 /* PhotoCell.swift */; };
 		23A0D237216D901400BEAE05 /* PagingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0D232216D901400BEAE05 /* PagingView.swift */; };
-		23A0D238216D901400BEAE05 /* PhotoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = 23A0D233216D901400BEAE05 /* PhotoView.xib */; };
 		23A0D239216D901400BEAE05 /* GradientView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0D234216D901400BEAE05 /* GradientView.swift */; };
 		23A0D23B216D92D500BEAE05 /* WaterfallLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0D23A216D92D500BEAE05 /* WaterfallLayout.swift */; };
 		23A0D23F216D988600BEAE05 /* PhotosDataSourceFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = 23A0D23D216D988600BEAE05 /* PhotosDataSourceFactory.swift */; };
@@ -283,7 +282,6 @@
 				23B683B7216BF83200CAA546 /* Sources */,
 				23B683B8216BF83200CAA546 /* Frameworks */,
 				23B683B9216BF83200CAA546 /* Resources */,
-				2364A4CB21839FE0009391D5 /* Swiftlint */,
 			);
 			buildRules = (
 			);
@@ -300,8 +298,9 @@
 		23B683B2216BF83200CAA546 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				BuildIndependentTargetsInParallel = YES;
 				LastSwiftUpdateCheck = 1000;
-				LastUpgradeCheck = 1250;
+				LastUpgradeCheck = 1640;
 				ORGANIZATIONNAME = Unsplash;
 				TargetAttributes = {
 					23B683BA216BF83200CAA546 = {
@@ -333,7 +332,6 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				23A0D238216D901400BEAE05 /* PhotoView.xib in Resources */,
 				0628427D25B1BE74006DCC9B /* Localizable.stringsdict in Resources */,
 				0628427C25B1BE74006DCC9B /* Localizable.strings in Resources */,
 				09F278B02193583A000A26A4 /* Assets.xcassets in Resources */,
@@ -341,27 +339,6 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
-
-/* Begin PBXShellScriptBuildPhase section */
-		2364A4CB21839FE0009391D5 /* Swiftlint */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputFileListPaths = (
-			);
-			inputPaths = (
-			);
-			name = Swiftlint;
-			outputFileListPaths = (
-			);
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "if which swiftlint >/dev/null; then\n  swiftlint\nelse\n  echo \"warning: SwiftLint not installed, download from https://github.com/realm/SwiftLint\"\nfi\n";
-		};
-/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		23B683B7216BF83200CAA546 /* Sources */ = {
@@ -471,6 +448,7 @@
 				DEBUG_INFORMATION_FORMAT = dwarf;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
 				ENABLE_TESTABILITY = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_NO_COMMON_BLOCKS = YES;
@@ -536,6 +514,7 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				ENABLE_NS_ASSERTIONS = NO;
 				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_USER_SCRIPT_SANDBOXING = YES;
 				GCC_C_LANGUAGE_STANDARD = gnu11;
 				GCC_NO_COMMON_BLOCKS = YES;
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -567,14 +546,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = UnsplashPhotoPicker/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unsplash.UnsplashPhotoPicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;
@@ -595,14 +576,16 @@
 				DYLIB_COMPATIBILITY_VERSION = 1;
 				DYLIB_CURRENT_VERSION = 1;
 				DYLIB_INSTALL_NAME_BASE = "@rpath";
+				ENABLE_MODULE_VERIFIER = YES;
 				INFOPLIST_FILE = UnsplashPhotoPicker/Info.plist;
 				INSTALL_PATH = "$(LOCAL_LIBRARY_DIR)/Frameworks";
-				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.6;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 					"@loader_path/Frameworks",
 				);
+				MODULE_VERIFIER_SUPPORTED_LANGUAGE_STANDARDS = "gnu11 gnu++14";
 				PRODUCT_BUNDLE_IDENTIFIER = com.unsplash.UnsplashPhotoPicker;
 				PRODUCT_NAME = "$(TARGET_NAME:c99extidentifier)";
 				SKIP_INSTALL = YES;

@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ConcurrentOperation: Operation {
+class ConcurrentOperation: Operation, @unchecked Sendable {
 
     var error: Error?
 

@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UnsplashRequest: NetworkRequest {
+class UnsplashRequest: NetworkRequest, @unchecked Sendable {
 
     enum RequestError: Error {
         case invalidJSONResponse

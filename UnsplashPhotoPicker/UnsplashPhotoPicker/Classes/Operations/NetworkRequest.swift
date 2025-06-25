@@ -8,7 +8,7 @@
 
 import Foundation
 
-class NetworkRequest: ConcurrentOperation {
+class NetworkRequest: ConcurrentOperation, @unchecked Sendable {
 
     enum Method: String {
         case get, post, put, delete

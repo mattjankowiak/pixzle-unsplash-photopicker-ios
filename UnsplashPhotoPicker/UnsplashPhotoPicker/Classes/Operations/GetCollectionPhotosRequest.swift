@@ -8,7 +8,7 @@
 
 import Foundation
 
-class GetCollectionPhotosRequest: UnsplashPagedRequest {
+class GetCollectionPhotosRequest: UnsplashPagedRequest, @unchecked Sendable {
 
     static func cursor(with collectionId: String, page: Int = 1, perPage: Int = 10) -> UnsplashPagedRequest.Cursor {
         let parameters: [String: Any] = ["id": collectionId]

@@ -17,20 +17,18 @@ extension UnsplashPhoto {
         let dragItem = UIDragItem(itemProvider: itemProvider)
         dragItem.localObject = self
         dragItem.previewProvider = {
-            guard let photoView = PhotoView.view(with: self) else {
-                return nil
-            }
-
-            photoView.userNameLabel.isHidden = true
-            photoView.layer.cornerRadius = 12
-            photoView.frame.size.width = 300
-            photoView.frame.size.height = 300 * CGFloat(self.height) / CGFloat(self.width)
-            photoView.layoutSubviews()
+            let imageView = UIImageView()
+            imageView.backgroundColor = self.color
+            imageView.layer.cornerRadius = 12
+            imageView.clipsToBounds = true
+            imageView.contentMode = .scaleAspectFill
+            imageView.frame.size.width = 300
+            imageView.frame.size.height = 300 * CGFloat(self.height) / CGFloat(self.width)
 
             let parameters = UIDragPreviewParameters()
             parameters.backgroundColor = .clear
 
-            return UIDragPreview(view: photoView, parameters: parameters)
+            return UIDragPreview(view: imageView, parameters: parameters)
         }
         return dragItem
     }

@@ -6,7 +6,7 @@
 //  Copyright © 2017 Unsplash. All rights reserved.
 //
 
-import UIKit
+import SwiftUI
 
 class PhotoCell: UICollectionViewCell {
 
@@ -14,16 +14,11 @@ class PhotoCell: UICollectionViewCell {
 
     static let reuseIdentifier = "PhotoCell"
 
-    let photoView: PhotoView = {
-        // swiftlint:disable force_cast
-        let photoView = (PhotoView.nib.instantiate(withOwner: nil, options: nil).first as! PhotoView)
-        photoView.translatesAutoresizingMaskIntoConstraints = false
-        return photoView
-    }()
-
     private lazy var checkmarkView: CheckmarkView = {
         return CheckmarkView()
     }()
+
+    private var photo: UnsplashPhoto?
 
     override var isSelected: Bool {
         didSet {
@@ -44,19 +39,18 @@ class PhotoCell: UICollectionViewCell {
     }
 
     private func postInit() {
-        setupPhotoView()
         setupCheckmarkView()
         updateSelectedState()
     }
 
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        photoView.prepareForReuse()
-    }
-
     private func updateSelectedState() {
-        photoView.alpha = isSelected ? 0.7 : 1
-        checkmarkView.alpha = isSelected ? 1 : 0
+        if #available(iOS 16.0, *) {
+            // UIHostingConfiguration handles alpha internally, so no need to change alpha here for the hosted view.
+            checkmarkView.alpha = isSelected ? 1 : 0
+        } else {
+            // Fallback for earlier iOS versions if needed
+            checkmarkView.alpha = isSelected ? 1 : 0
+        }
     }
 
     // Override to bypass some expensive layout calculations.
@@ -67,18 +61,15 @@ class PhotoCell: UICollectionViewCell {
     // MARK: - Setup
 
     func configure(with photo: UnsplashPhoto) {
-        photoView.configure(with: photo)
-    }
-
-    private func setupPhotoView() {
-        contentView.preservesSuperviewLayoutMargins = true
-        contentView.addSubview(photoView)
-        NSLayoutConstraint.activate([
-            photoView.topAnchor.constraint(equalTo: contentView.topAnchor),
-            photoView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor),
-            photoView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor),
-            photoView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor)
-        ])
+        self.photo = photo
+        if #available(iOS 16.0, *) {
+            let config = UIHostingConfiguration {
+                PhotoView(photo: photo, showsUsername: true)
+            }
+            UIView.transition(with: self.contentView, duration: 0.3, options: .transitionCrossDissolve, animations: {
+                self.contentConfiguration = config
+            }, completion: nil)
+        }
     }
 
     private func setupCheckmarkView() {

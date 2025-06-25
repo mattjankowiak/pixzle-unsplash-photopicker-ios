@@ -1,23 +1,24 @@
-// swift-tools-version:5.3
+// swift-tools-version:5.6
 // The swift-tools-version declares the minimum version of Swift required to build this package.
 
 import PackageDescription
 
+// swift-tools-version:5.6
 let package = Package(
-    name: "UnsplashPhotoPicker",
+    name: "PixzleUnsplashPhotoPicker",
     defaultLocalization: "en",
-    platforms: [.iOS(.v11)],
+    platforms: [.iOS(.v15)],
     products: [
         .library(
-            name: "UnsplashPhotoPicker",
-            targets: ["UnsplashPhotoPicker"]),
+            name: "PixzleUnsplashPhotoPicker",
+            targets: ["PixzleUnsplashPhotoPicker"]
+        ),
     ],
     targets: [
         .target(
-            name: "UnsplashPhotoPicker",
+            name: "PixzleUnsplashPhotoPicker",
             dependencies: [],
-            path: "UnsplashPhotoPicker/UnsplashPhotoPicker",
-            exclude: ["Info.plist", "UnsplashPhotoPicker.h"]
+            path: "UnsplashPhotoPicker"
         )
     ]
 )

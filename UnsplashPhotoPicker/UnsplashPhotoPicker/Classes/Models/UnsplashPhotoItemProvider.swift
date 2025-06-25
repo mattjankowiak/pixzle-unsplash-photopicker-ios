@@ -7,8 +7,8 @@
 //
 
 import Foundation
-import MobileCoreServices
 import UIKit
+import UniformTypeIdentifiers
 
 let kUTTypeUnsplashPhoto = "com.unsplash.photo"
 
@@ -41,12 +41,12 @@ extension UnsplashPhotoItemProvider: NSItemProviderWriting {
 
     static var writableTypeIdentifiersForItemProvider: [String] = [
         kUTTypeUnsplashPhoto,
-        kUTTypeJPEG as String
+        UTType.jpeg.identifier
     ]
 
     func loadData(withTypeIdentifier typeIdentifier: String, forItemProviderCompletionHandler completionHandler: @escaping (Data?, Error?) -> Void) -> Progress? {
-        switch typeIdentifier as CFString {
-        case kUTTypeUnsplashPhoto as String:
+        switch typeIdentifier {
+        case kUTTypeUnsplashPhoto:
             do {
                 let data = try JSONEncoder().encode(self)
                 completionHandler(data, nil)
@@ -54,7 +54,7 @@ extension UnsplashPhotoItemProvider: NSItemProviderWriting {
                 completionHandler(nil, error)
             }
 
-        case kUTTypeJPEG:
+        case UTType.jpeg.identifier:
             guard let url = photo.urls[.full] else {
                 completionHandler(nil, ItemProviderError.cannotDecodeLink(key: UnsplashPhoto.LinkKind.download.rawValue, photoIdentifier: photo.identifier))
                 return nil

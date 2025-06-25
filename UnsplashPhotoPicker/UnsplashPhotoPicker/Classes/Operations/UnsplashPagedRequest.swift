@@ -8,7 +8,7 @@
 
 import Foundation
 
-class UnsplashPagedRequest: UnsplashRequest {
+class UnsplashPagedRequest: UnsplashRequest, @unchecked Sendable {
 
     struct Cursor {
         let page: Int

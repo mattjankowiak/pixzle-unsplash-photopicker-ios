@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Workspace
+   version = "1.0">
+   <Group
+      location = "group:ExamplePixzleUnsplashPhotoPicker"
+      name = "ExamplePixzleUnsplashPhotoPicker">
+      <Group
+         location = "group:ExamplePixzleUnsplashPhotoPicker"
+         name = "ExamplePixzleUnsplashPhotoPicker">
+         <FileRef
+            location = "group:Assets.xcassets">
+         </FileRef>
+         <FileRef
+            location = "group:ExamplePixzleUnsplashPhotoPickerApp.swift">
+         </FileRef>
+         <FileRef
+            location = "group:ContentView.swift">
+         </FileRef>
+      </Group>
+      <FileRef
+         location = "group:ExamplePixzleUnsplashPhotoPicker.xcodeproj">
+      </FileRef>
+   </Group>
+   <FileRef
+      location = "group:LICENSE">
+   </FileRef>
+   <FileRef
+      location = "group:Package.swift">
+   </FileRef>
+   <FileRef
+      location = "group:README.md">
+   </FileRef>
+   <Group
+      location = "group:UnsplashPhotoPicker"
+      name = "UnsplashPhotoPicker">
+      <FileRef
+         location = "group:UnsplashPhotoPicker.xcodeproj">
+      </FileRef>
+      <Group
+         location = "group:UnsplashPhotoPicker"
+         name = "UnsplashPhotoPicker">
+         <Group
+            location = "group:Classes"
+            name = "Classes">
+            <Group
+               location = "group:Configuration"
+               name = "Configuration">
+               <FileRef
+                  location = "group:UnsplashPhotoPickerConfiguration.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Configuration.swift">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:UnsplashPhotoPicker.h">
+            </FileRef>
+            <Group
+               location = "group:Utils"
+               name = "Utils">
+               <FileRef
+                  location = "group:KeyedDecodingContainer+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:NSError+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UIColor+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UIImage+Preload.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UIColor+PhotoPicker.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Dictionary+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:URL+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:OperationQueue+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:Bundle+Extensions.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:String+Localization.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Models"
+               name = "Models">
+               <FileRef
+                  location = "group:UnsplashPhotoItemProvider.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashUser.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPhotoExif.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPhoto.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPhoto+DragAndDrop.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Operations"
+               name = "Operations">
+               <FileRef
+                  location = "group:ConcurrentOperation.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:SearchPhotosRequest.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPagedRequest.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashRequest.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:GetCollectionPhotosRequest.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:NetworkRequest.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Controllers"
+               name = "Controllers">
+               <FileRef
+                  location = "group:UnsplashPhotoPicker.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashSearchController.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPhotoPickerViewController+UICollectionView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPhotoPickerViewController.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:UnsplashPhotoPickerPreviewViewController.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Views"
+               name = "Views">
+               <FileRef
+                  location = "group:CheckmarkView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:PhotoView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:EmptyView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:PhotoCell.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:PagingView.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:WaterfallLayout.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:GradientView.swift">
+               </FileRef>
+            </Group>
+            <Group
+               location = "group:Services"
+               name = "Services">
+               <FileRef
+                  location = "group:ImageCache.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:PhotosDataSourceFactory.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:ImageDownloader.swift">
+               </FileRef>
+               <FileRef
+                  location = "group:PagedDataSource.swift">
+               </FileRef>
+            </Group>
+         </Group>
+         <Group
+            location = "group:Resources"
+            name = "Resources">
+            <Group
+               location = "group:en.lproj"
+               name = "en.lproj">
+               <FileRef
+                  location = "group:Localizable.strings">
+               </FileRef>
+               <FileRef
+                  location = "group:Localizable.stringsdict">
+               </FileRef>
+            </Group>
+            <FileRef
+               location = "group:Assets.xcassets">
+            </FileRef>
+         </Group>
+         <FileRef
+            location = "group:Info.plist">
+         </FileRef>
+      </Group>
+   </Group>
+   <FileRef
+      location = "group:UnsplashPhotoPicker.podspec">
+   </FileRef>
+</Workspace>

@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 /**
  Content Safety
@@ -47,6 +48,12 @@ public struct UnsplashPhotoPickerConfiguration {
     /// Set the content safety filter.
     public var contentFilterLevel = defaultContentFilterLevel
 
+    /// The background color of the picker
+    public var backgroundColor: Color?
+
+    /// The titel text color of the picker
+    public var titleTextColor: Color?
+    
     /// The default memory capacity used by the cache.
     public static let defaultMemoryCapacity: Int = ImageCache.memoryCapacity
 
@@ -55,12 +62,13 @@ public struct UnsplashPhotoPickerConfiguration {
 
     /// The default content safety filter.
     public static let defaultContentFilterLevel: ContentFilterLevel = .low
+    
 
     /// The Unsplash API url.
     let apiURL = "https://api.unsplash.com/"
 
     /// The Unsplash editorial collection id.
-    let editorialCollectionId = "317099"
+    let editorialCollectionId = "317099" // Deprecated use; consider dynamic feed instead
 
     /**
      Initializes an `UnsplashPhotoPickerConfiguration` object with optionally customizable behaviors.
@@ -78,7 +86,9 @@ public struct UnsplashPhotoPickerConfiguration {
                 allowsMultipleSelection: Bool = false,
                 memoryCapacity: Int = defaultMemoryCapacity,
                 diskCapacity: Int = defaultDiskCapacity,
-                contentFilterLevel: ContentFilterLevel = defaultContentFilterLevel
+                contentFilterLevel: ContentFilterLevel = defaultContentFilterLevel,
+                backgroundColor: Color? = nil,
+                titleTextColor: Color? = nil
     ) {
         self.accessKey = accessKey
         self.secretKey = secretKey
@@ -87,6 +97,8 @@ public struct UnsplashPhotoPickerConfiguration {
         self.memoryCapacity = memoryCapacity
         self.diskCapacity = diskCapacity
         self.contentFilterLevel = contentFilterLevel
+        self.backgroundColor = backgroundColor
+        self.titleTextColor = titleTextColor
     }
 
     init() {}

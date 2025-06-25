@@ -45,7 +45,7 @@ class WaterfallLayout: UICollectionViewLayout {
     }
 
     private var itemSpacing: CGFloat {
-        return isSingleColumn ? 1 : 16
+        return isSingleColumn ? 1 : 5
     }
 
     private var columnWidth: CGFloat {
